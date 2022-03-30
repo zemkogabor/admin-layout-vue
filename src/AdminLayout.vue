@@ -113,7 +113,7 @@ import SidebarSubItem from './SidebarSubItem.vue'
 export default {
   name: 'AdminLayout',
   components: {
-    SidebarSubItem
+    SidebarSubItem,
   },
   props: {
     brandName: {
