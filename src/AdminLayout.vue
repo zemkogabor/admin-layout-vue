@@ -41,20 +41,32 @@
         <div class="position-sticky sidebar-content">
           <ul class="nav flex-column">
             <template v-for="(item, index) in items" :key="index">
-              <div v-if="item.heading !== undefined" class="sidebar-heading px-3 mt-3 text-muted">
+              <div v-if="item.heading" class="sidebar-heading px-3 mt-3 text-muted">
                 {{ item.heading }}
               </div>
               <li v-for="(subItem, subItemIndex) in item.subItems" :key="subItemIndex" class="nav-item">
                 <router-link
+                  v-if="subItem.route"
                   :to="subItem.route"
                   class="nav-link"
                   :class="{
                     'text-primary': subItem.route.name === $route.name
                   }"
                 >
-                  <i v-if="subItem.iconClass !== null" :class="subItem.iconClass" />
-                  {{ subItem.label }}
+                  <sidebar-sub-item :label="subItem.label" :icon-class="subItem.iconClass" />
                 </router-link>
+                <a
+                  v-else
+                  class="nav-link"
+                  :class="{
+                    'text-primary': subItem.active
+                  }"
+                  :href="subItem.href"
+                  :target="subItem.target"
+                  @click="subItem.callable"
+                >
+                  <sidebar-sub-item :label="subItem.label" :icon-class="subItem.iconClass" />
+                </a>
               </li>
             </template>
           </ul>
@@ -70,6 +82,8 @@
 </template>
 
 <script>
+import SidebarSubItem from './SidebarSubItem.vue'
+
 /**
  * @typedef {Object} SidebarItem
  * @property {string|null} heading - Sidebar item heading.
@@ -77,8 +91,12 @@
  *
  * @typedef {Object} SubItem
  * @property {string} label - Sub item label.
- * @property {string} iconClass - Sub item icon class.
- * @property {Route} route
+ * @property {string|null} iconClass - Sub item icon class.
+ * @property {Route|null} route
+ * @property {string|null} href - Sub item href.
+ * @property {string|null} target - Sub item target, e.g.: "_blank"
+ * @property {boolean|null} active - Sub item active or not.
+ * @property {function|null} callable - Callable function onclick
 
  * @typedef {Object} Route
  * @property {string} name - Route name.
@@ -90,10 +108,13 @@
  *
  * @typedef {Object} NavbarDropdownItem
  * @param {string} label - Label
- * @param {function} callable - Callable funcion onclick
+ * @param {function} callable - Callable function onclick
  */
 export default {
   name: 'AdminLayout',
+  components: {
+    SidebarSubItem
+  },
   props: {
     brandName: {
       type: String,
