@@ -13,26 +13,7 @@
     >
       <span class="navbar-toggler-icon" />
     </button>
-    <div v-if="navbarDropdown !== null" class="dropdown">
-      <a
-        id="navbarDropdownMenuLink"
-        class="nav-link text-light"
-        href="#"
-        role="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        <i :class="navbarDropdown.iconClass" />
-        <span v-if="navbarDropdown.title !== null" class="ms-2" v-text="navbarDropdown.title" />
-      </a>
-      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-        <li v-for="(dropdownItem, index) in navbarDropdown.items" :key="index">
-          <a class="dropdown-item" href="#" @click="dropdownItem.callable">
-            {{ dropdownItem.label }}
-          </a>
-        </li>
-      </ul>
-    </div>
+    <slot name="navbar-end" />
   </nav>
 
   <div class="container-fluid">

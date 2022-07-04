@@ -30,12 +30,6 @@ npm install admin-layout-vue
 | items[].subItems[].target       | String   | No           |
 | items[].subItems[].active       | Boolean  | No           |
 | items[].subItems[].callable     | Function | No           |
-| navbarDropdown                  | Object   | No           |
-| navbarDropdown.title            | String   | No           |
-| navbarDropdown.iconClass        | String   | Yes          |
-| navbarDropdown.items            | Array    | Yes          |
-| navbarDropdown.items[].label    | String   | Yes          |
-| navbarDropdown.items[].callable | Function | Yes          |
 
 ## Example
 
@@ -46,6 +40,31 @@ npm install admin-layout-vue
       :items="items"
       :navbar-dropdown="navbarDropdown"
   >
+    <template #navbar-end>
+      <div class="dropdown">
+        <a
+            id="navbarDropdownMenuLink"
+            class="nav-link text-light p-2"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+        >
+          <i :class="navbarDropdown.iconClass" />
+          <span v-if="navbarDropdown.title !== null" class="ms-2" v-text="navbarDropdown.title" />
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+          <li v-for="(dropdownItem, index) in navbarDropdown.items" :key="index">
+            <a class="dropdown-item" href="#" @click="dropdownItem.callable">
+              {{ dropdownItem.label }}
+            </a>
+          </li>
+        </ul>
+      </div>
+      <button class="btn p-2">
+        <i class="bi bi-bell-fill text-light" />
+      </button>
+    </template>
     <router-view />
   </admin-layout> 
 </template>
