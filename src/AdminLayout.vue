@@ -53,7 +53,7 @@
           </ul>
         </div>
       </nav>
-      <main role="main" class="col-md-9 col-lg-10 ms-sm-auto">
+      <main role="main" class="col-md-9 col-lg-10 ms-sm-auto pe-4">
         <div class="py-3">
           <slot />
         </div>
