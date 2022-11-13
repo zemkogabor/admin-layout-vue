@@ -22,7 +22,7 @@
         <div class="position-sticky sidebar-content">
           <ul class="nav flex-column">
             <template v-for="(item, index) in items" :key="index">
-              <div v-if="item.heading" class="text-uppercase px-3 mt-3 text-muted small">
+              <div v-if="item.heading" class="text-uppercase px-3 mt-3 text-light small">
                 {{ item.heading }}
               </div>
               <li v-for="(subItem, subItemIndex) in item.subItems" :key="subItemIndex" class="nav-item">
@@ -31,7 +31,8 @@
                   :to="subItem.route"
                   class="nav-link"
                   :class="{
-                    'text-primary': subItem.route.name === $route.name
+                    'text-light': subItem.route.name === $route.name,
+                    'text-muted': subItem.route.name !== $route.name
                   }"
                 >
                   <sidebar-sub-item :label="subItem.label" :icon-class="subItem.iconClass" />
@@ -133,10 +134,6 @@ export default {
   .sidebar-content {
     width: 11.25rem;
   }
-}
-
-.sidebar .nav-link {
-  color: #fff;
 }
 
 .navbar {
