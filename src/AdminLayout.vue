@@ -18,11 +18,11 @@
 
   <div class="container-fluid">
     <div class="row">
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse collapse-horizontal">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse collapse-horizontal">
         <div class="position-sticky sidebar-content">
           <ul class="nav flex-column">
             <template v-for="(item, index) in items" :key="index">
-              <div v-if="item.heading" class="sidebar-heading px-3 mt-3 text-muted">
+              <div v-if="item.heading" class="text-uppercase px-3 mt-3 text-muted small">
                 {{ item.heading }}
               </div>
               <li v-for="(subItem, subItemIndex) in item.subItems" :key="subItemIndex" class="nav-item">
@@ -136,14 +136,7 @@ export default {
 }
 
 .sidebar .nav-link {
-  font-weight: 500;
-  color: #333;
-  font-size: 85%;
-}
-
-.sidebar-heading {
-  font-size: .75rem;
-  text-transform: uppercase;
+  color: #fff;
 }
 
 .navbar {
@@ -153,9 +146,6 @@ export default {
 .navbar-brand {
   padding-top: .75rem;
   padding-bottom: .75rem;
-  font-size: 1rem;
-  background-color: rgba(0, 0, 0, .25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
 }
 
 .navbar-toggler {
