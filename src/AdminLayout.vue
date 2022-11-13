@@ -31,8 +31,8 @@
                   :to="subItem.route"
                   class="nav-link"
                   :class="{
-                    'text-light': subItem.route.name === $route.name,
-                    'text-muted': subItem.route.name !== $route.name
+                    'text-white': subItem.route.name === $route.name,
+                    'text-light': subItem.route.name !== $route.name
                   }"
                 >
                   <sidebar-sub-item :label="subItem.label" :icon-class="subItem.iconClass" />
