@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
     <div class="navbar-brand col-md-3 col-lg-2 d-none d-md-block px-3 me-auto">
       {{ brandName }}
     </div>
@@ -125,7 +125,6 @@ export default {
   left: 0;
   z-index: 100; /* Behind the navbar */
   padding-top: 3.6rem;
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 
   // only SM
   @media (min-width: 576px) and (max-width: 768px) {
