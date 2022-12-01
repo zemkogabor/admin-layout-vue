@@ -328,7 +328,7 @@ $main-padding: 1rem !default;
     .nav-sub-items {
       display: none;
       width: $navbar-left-width - $navbar-left-width-minimize;
-      background-color: $dark;
+      background-color: var(--bs-dark);
       position: absolute;
       left: $navbar-left-width-minimize;
       top: 0;
