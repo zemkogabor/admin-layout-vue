@@ -152,3 +152,11 @@ export default {
 }
 </script>
 ```
+
+## Screenshots
+<img width="1132" alt="Screenshot 2022-12-01 at 15 19 19" src="https://user-images.githubusercontent.com/39522338/205076785-d5b4acd2-8a40-40c0-b033-458bf9999fc5.png">
+
+<img width="1132" alt="Screenshot 2022-12-01 at 15 19 37" src="https://user-images.githubusercontent.com/39522338/205076815-27532683-a0c0-4335-a13a-9b5951c35fb0.png">
+
+<img width="572" alt="Screenshot 2022-12-01 at 15 18 55" src="https://user-images.githubusercontent.com/39522338/205076863-98b33cf8-260f-44a3-b162-e55cd7a4c2a4.png">
+
