@@ -4,7 +4,7 @@
 
 
 ## Requirements:
-- Bootstrap 5
+- Bootstrap 5.2
 - Vue router (for `<router-link>`)
 - Vue 3
 
@@ -16,57 +16,42 @@ npm install admin-layout-vue
 
 ## Parameters:
 
-| **Property**                    | **Type** | **Required** |
-|---------------------------------|----------|--------------|
-| brandName                       | String   | Yes          |
-| items                           | Array    | Yes          |
-| items[].heading                 | String   | No           |
-| items[].subItems                | Array    | Yes          |
-| items[].subItems[].label        | String   | Yes          |
-| items[].subItems[].iconClass    | String   | No           |
-| items[].subItems[].route        | Object   | No           |
-| items[].subItems[].route.name   | String   | Yes          |
-| items[].subItems[].href         | String   | No           |
-| items[].subItems[].target       | String   | No           |
-| items[].subItems[].active       | Boolean  | No           |
-| items[].subItems[].callable     | Function | No           |
+| **Property**                                      | **Type** | **Required** |
+|---------------------------------------------------|----------|--------------|
+| brandName                                         | String   | Yes          |
+| leftItemsByGroups                                 | Array    | Yes          |
+| leftItemsByGroups[].heading                       | String   | No           |
+| leftItemsByGroups[].items                         | Array    | Yes          |
+| leftItemsByGroups[].items[].label                 | String   | Yes          |
+| leftItemsByGroups[].items[].iconClass             | String   | No           |
+| leftItemsByGroups[].items[].route                 | Object   | No           |
+| leftItemsByGroups[].items[].route.name            | String   | Yes          |
+| leftItemsByGroups[].items[].subItems              | Array    | No           |
+| leftItemsByGroups[].items[].subItems[].label      | String   | Yes          |
+| leftItemsByGroups[].items[].subItems[].route      | Object   | Yes          |
+| leftItemsByGroups[].items[].subItems[].route.name | Object   | Yes          |
+| topItems                                          | Array    | Yes          |
+| topItems[].label                                  | String   | No           |
+| topItems[].iconClass                              | String   | No           |
+| topItems[].callable                               | Callable | No           |
+| topItems[].showBadge                              | Bool     | No           |
+| topItems[].subItems[]                             | Array    | No           |
+| topItems[].subItems[]                             | Array    | No           |
+| topItems[].subItems[].label                       | String   | Yes          |
+| topItems[].subItems[].callable                    | Callable | Yes          |
+
 
 ## Example
 
 ```vue
 <template>
   <admin-layout
-      brand-name="Example Brand"
-      :items="items"
-      :navbar-dropdown="navbarDropdown"
+      brand-name="Brand"
+      :left-items-by-groups="leftItemsByGroups"
+      :top-items="topItems"
   >
-    <template #navbar-end>
-      <div class="dropdown">
-        <a
-            id="navbarDropdownMenuLink"
-            class="nav-link text-light p-2"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-        >
-          <i :class="navbarDropdown.iconClass" />
-          <span v-if="navbarDropdown.title !== null" class="ms-2" v-text="navbarDropdown.title" />
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-          <li v-for="(dropdownItem, index) in navbarDropdown.items" :key="index">
-            <a class="dropdown-item" href="#" @click="dropdownItem.callable">
-              {{ dropdownItem.label }}
-            </a>
-          </li>
-        </ul>
-      </div>
-      <button class="btn p-2">
-        <i class="bi bi-bell-fill text-light" />
-      </button>
-    </template>
     <router-view />
-  </admin-layout> 
+  </admin-layout>
 </template>
 
 <script>
@@ -80,50 +65,88 @@ export default {
   data() {
     return {
       /**
-       * Menu items
+       * Sidebar menu items
        */
-      items: [
+      leftItemsByGroups: [
         {
-          subItems: [
+          items: [
             {
-              label: 'First Page',
-              iconClass: 'bi bi-collection',
+              label: 'Home',
+              iconClass: 'bi bi-house-door-fill',
               route: {
-                name: 'FirstPage',
+                name: 'home',
               },
             },
           ],
         },
         {
-          heading: 'Example heading',
-          subItems: [
+          heading: 'First heading',
+          items: [
             {
-              label: 'Google',
-              href: 'https://google.com',
-              target: '_blank',
-              active: false,
-              callable: () => {
-                console.log('Callable example.')
+              label: 'People',
+              iconClass: 'bi bi-people-fill',
+              route: {
+                name: 'people',
+              },
+            },
+            {
+              label: 'Briefcase',
+              iconClass: 'bi bi-briefcase-fill',
+              subItems: [
+                {
+                  label: 'Option 1',
+                  route: {
+                    name: 'option',
+                    query: {
+                      status: '1',
+                    },
+                  },
+                },
+                {
+                  label: 'Option 2',
+                  route: {
+                    name: 'option',
+                    query: {
+                      status: '2',
+                    },
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          items: [
+            {
+              label: 'Coin',
+              iconClass: 'bi bi-coin',
+              route: {
+                name: 'coin',
               },
             },
           ],
         },
       ],
       /**
-       * Navbar dropdown
+       * Top navbar items
        */
-      navbarDropdown: {
-        title: null,
-        iconClass: 'bi bi-person-circle',
-        items: [
-          {
-            label: 'Example item',
-            callable: () => {
-              console.log('Callable dropdown example.')
+      topItems: [
+        {
+          iconClass: 'bi bi-person-circle',
+          subItems: [
+            {
+              label: this.$t('logout.submit'),
+              callable: this.onLogoutClick,
             },
-          },
-        ],
-      },
+          ],
+          showBadge: false,
+        },
+        {
+          iconClass: 'bi bi-bell-fill',
+          callable: this.showNotifications,
+          showBadge: this.notificationsTotalCount > 0,
+        },
+      ],
     }
   }
 }
