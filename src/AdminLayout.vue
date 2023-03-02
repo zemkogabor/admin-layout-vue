@@ -44,55 +44,59 @@
           <div v-if="group.heading" class="group-heading-text text-uppercase text-muted mb-2">
             {{ group.heading }}
           </div>
-          <div v-for="(item, itemIndex) in group.items" :key="itemIndex" class="nav-item position-relative">
-            <router-link
-              v-if="item.route"
-              :to="item.route"
-              class="nav-link d-flex align-items-center"
-              :class="{
-                'active': isActiveRoute(item.route),
-              }"
-              @click="hideLeftNavbarToggle"
-            >
-              <i class="nav-link-icon" :class="item.iconClass" />
-              <span class="nav-link-text text-nowrap" v-text="item.label" />
-            </router-link>
-            <template v-else-if="item.subItems">
-              <a
+          <template v-for="(item, itemIndex) in group.items" :key="itemIndex">
+            <div v-if="item.visible !== false" class="nav-item position-relative">
+              <router-link
+                v-if="item.route"
+                :to="item.route"
                 class="nav-link d-flex align-items-center"
                 :class="{
-                  'collapsed': !isActiveAnySubItem(item.subItems),
+                  'active': isActiveRoute(item.route),
                 }"
-                href="#"
-                data-bs-toggle="collapse"
-                :data-bs-target="'#group' + groupIndex + 'item' + itemIndex"
+                @click="hideLeftNavbarToggle"
               >
                 <i class="nav-link-icon" :class="item.iconClass" />
                 <span class="nav-link-text text-nowrap" v-text="item.label" />
-                <i class="nav-link-care-icon bi bi-caret-down-fill ms-auto caret-icon" />
-              </a>
-              <div
-                :id="'group' + groupIndex + 'item' + itemIndex"
-                class="nav-sub-items collapse"
-                :class="{
-                  'show': isActiveAnySubItem(item.subItems),
-                }"
-              >
-                <div v-for="(subItem, subItemIndex) in item.subItems" :key="subItemIndex" class="nav-item">
-                  <router-link
-                    class="nav-link text-nowrap d-flex align-items-center"
-                    :class="{
-                      'active': isActiveRoute(subItem.route),
-                    }"
-                    :to="subItem.route"
-                    @click="hideLeftNavbarToggle"
-                  >
-                    {{ subItem.label }}
-                  </router-link>
+              </router-link>
+              <template v-else-if="item.subItems">
+                <a
+                  class="nav-link d-flex align-items-center"
+                  :class="{
+                    'collapsed': !isActiveAnySubItem(item.subItems),
+                  }"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  :data-bs-target="'#group' + groupIndex + 'item' + itemIndex"
+                >
+                  <i class="nav-link-icon" :class="item.iconClass" />
+                  <span class="nav-link-text text-nowrap" v-text="item.label" />
+                  <i class="nav-link-care-icon bi bi-caret-down-fill ms-auto caret-icon" />
+                </a>
+                <div
+                  :id="'group' + groupIndex + 'item' + itemIndex"
+                  class="nav-sub-items collapse"
+                  :class="{
+                    'show': isActiveAnySubItem(item.subItems),
+                  }"
+                >
+                  <template v-for="(subItem, subItemIndex) in item.subItems" :key="subItemIndex">
+                    <div v-if="subItem.visible !== false" class="nav-item">
+                      <router-link
+                        class="nav-link text-nowrap d-flex align-items-center"
+                        :class="{
+                          'active': isActiveRoute(subItem.route),
+                        }"
+                        :to="subItem.route"
+                        @click="hideLeftNavbarToggle"
+                      >
+                        {{ subItem.label }}
+                      </router-link>
+                    </div>
+                  </template>
                 </div>
-              </div>
-            </template>
-          </div>
+              </template>
+            </div>
+          </template>
         </div>
       </div>
     </nav>
