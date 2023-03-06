@@ -231,6 +231,7 @@ $main-padding: 1rem !default;
   display: flex;
   align-items: center;
   color: $white;
+  white-space: nowrap;
 }
 
 .nav-link-icon {
