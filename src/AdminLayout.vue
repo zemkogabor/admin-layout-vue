@@ -41,7 +41,7 @@
       </div>
       <div class="navbar-nav">
         <div v-for="(group, groupIndex) in leftItemsByGroups" :key="groupIndex" class="group-wrapper">
-          <div v-if="group.heading" class="group-heading-text text-uppercase text-muted mb-2">
+          <div v-if="group.heading" class="group-heading-text text-uppercase mb-2">
             {{ group.heading }}
           </div>
           <template v-for="(item, itemIndex) in group.items" :key="itemIndex">
@@ -254,6 +254,7 @@ $main-padding: 1rem !default;
   padding-right: $navbar-left-x-padding;
   font-size: $navbar-left-group-heading-text-font-size;
   cursor: default;
+  color: var(--bs-nav-link-color)
 }
 
 .caret-icon {
