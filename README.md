@@ -39,6 +39,7 @@ npm install admin-layout-vue
 | topItems[].showBadge                              | Bool     | No           |
 | topItems[].subItems[]                             | Array    | No           |
 | topItems[].subItems[].label                       | String   | Yes          |
+| topItems[].subItems[].class                       | String   | No           |
 | topItems[].subItems[].iconClass                   | String   | No           |
 | topItems[].subItems[].callable                    | Callable | Yes          |
 
