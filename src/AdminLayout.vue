@@ -26,7 +26,7 @@
           <ul v-if="item.subItems" class="dropdown-menu dropdown-menu-end">
             <li v-for="(subItem, subItemIndex) in item.subItems" :key="subItemIndex">
               <a class="dropdown-item" href="#" @click="subItem.callable">
-                {{ subItem.label }}
+                {{ subItem.iconClass }} {{ subItem.label }}
               </a>
             </li>
           </ul>
