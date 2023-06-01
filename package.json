@@ -1,6 +1,6 @@
 {
   "name": "admin-layout-vue",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "description": " Admin layout Vue component with sidebar and navbar.",
   "author": "Gabor Zemko <gaborzemko@gmail.com>",
   "homepage": "https://github.com/zemkogabor/admin-layout-vue",

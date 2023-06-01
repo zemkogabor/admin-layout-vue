@@ -1,10 +1,10 @@
 <template>
   <div ref="wrapper" class="layout-wrapper">
-    <nav class="navbar navbar-expand navbar-top bg-light border-bottom px-3">
-      <button type="button" class="btn btn-light d-md-none" @click="showLeftNavbarToggle">
+    <nav class="navbar navbar-expand navbar-top border-bottom px-3" data-bs-theme>
+      <button type="button" class="btn d-md-none" @click="showLeftNavbarToggle">
         <i class="bi bi-list" />
       </button>
-      <button type="button" class="btn btn-light d-none d-md-block" @click="minimizeLeftNavbarToggle">
+      <button type="button" class="btn d-none d-md-block" @click="minimizeLeftNavbarToggle">
         <i class="bi bi-list" />
       </button>
       <div class="navbar-nav ms-auto">
