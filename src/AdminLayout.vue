@@ -1,6 +1,6 @@
 <template>
   <div ref="wrapper" class="layout-wrapper">
-    <nav class="navbar navbar-expand navbar-top border-bottom px-3" data-bs-theme>
+    <nav class="navbar navbar-expand navbar-top border-bottom px-3" :class="topNavClass" :data-bs-theme="dataBsTheme">
       <button type="button" class="btn d-md-none" @click="showLeftNavbarToggle">
         <i class="bi bi-list" />
       </button>
@@ -39,7 +39,7 @@
         </div>
       </div>
     </nav>
-    <nav class="navbar-dark navbar-left bg-dark">
+    <nav class="navbar-left" :class="leftNavClass">
       <div class="brand">
         <span class="brand-text">
           {{ brandName }}
@@ -128,6 +128,18 @@ export default {
     leftItemsByGroups: {
       type: Array,
       required: true,
+    },
+    topNavClass: {
+      type: String,
+      default: null,
+    },
+    leftNavClass: {
+      type: String,
+      default: null,
+    },
+    dataBsTheme: {
+      type: String,
+      default: null,
     },
   },
   methods: {
@@ -236,7 +248,6 @@ $main-padding: 1rem !default;
   font-size: $navbar-brand-font-size;
   display: flex;
   align-items: center;
-  color: $white;
   white-space: nowrap;
 }
 
@@ -293,6 +304,7 @@ $main-padding: 1rem !default;
 @include media-breakpoint-up(md) {
   .navbar-left {
     width: $navbar-left-width;
+    border-right: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)
   }
 
   .navbar-top {
