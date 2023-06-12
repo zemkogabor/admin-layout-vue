@@ -25,15 +25,15 @@
           </button>
           <ul v-if="item.subItems" class="dropdown-menu dropdown-menu-end">
             <li v-for="(subItem, subItemIndex) in item.subItems" :key="subItemIndex">
-              <a
+              <button
                 class="dropdown-item"
+                type="button"
                 :class="subItem.class"
-                href="#"
                 @click="subItem.callable"
               >
                 <i v-if="subItem.iconClass !== undefined" :class="subItem.iconClass" />
                 {{ subItem.label }}
-              </a>
+              </button>
             </li>
           </ul>
         </div>
