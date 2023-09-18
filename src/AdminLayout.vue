@@ -1,6 +1,6 @@
 <template>
   <div ref="wrapper" class="layout-wrapper">
-    <nav class="navbar navbar-expand navbar-top border-bottom px-3" :class="topNavClass" :data-bs-theme="dataBsTheme">
+    <nav class="navbar navbar-expand navbar-top border-bottom px-3" :class="topNavClass" :data-bs-theme="dataBsThemeTop">
       <button type="button" class="btn d-md-none" @click="showLeftNavbarToggle">
         <i class="bi bi-list" />
       </button>
@@ -39,8 +39,8 @@
         </div>
       </div>
     </nav>
-    <nav class="navbar-left" :class="leftNavClass">
-      <div class="brand">
+    <nav class="navbar navbar-left" :class="[leftNavClass, leftNavBgClass]" :data-bs-theme="dataBsThemeLeft">
+      <div class="navbar-brand">
         <span class="brand-text">
           {{ brandName }}
         </span>
@@ -81,9 +81,7 @@
                 <div
                   :id="'group' + groupIndex + 'item' + itemIndex"
                   class="nav-sub-items collapse"
-                  :class="{
-                    'show': isActiveAnySubItem(item.subItems),
-                  }"
+                  :class="[isActiveAnySubItem(item.subItems) ? 'show' : '', leftNavBgClass]"
                 >
                   <template v-for="(subItem, subItemIndex) in item.subItems" :key="subItemIndex">
                     <div v-if="subItem.visible !== false" class="nav-item">
@@ -137,7 +135,15 @@ export default {
       type: String,
       default: null,
     },
-    dataBsTheme: {
+    leftNavBgClass: {
+      type: String,
+      default: null,
+    },
+    dataBsThemeTop: {
+      type: String,
+      default: null,
+    },
+    dataBsThemeLeft: {
       type: String,
       default: null,
     },
@@ -209,6 +215,7 @@ $main-padding: 1rem !default;
 }
 
 .navbar-left {
+  display: block;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -241,14 +248,11 @@ $main-padding: 1rem !default;
   opacity: .5;
 }
 
-.brand {
+.navbar-brand {
   height: $navbar-top-height;
   padding-left: $navbar-left-x-padding;
   padding-right: $navbar-left-x-padding;
-  font-size: $navbar-brand-font-size;
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
+  margin: 0;
 }
 
 .nav-link-icon {
@@ -271,7 +275,8 @@ $main-padding: 1rem !default;
   padding-right: $navbar-left-x-padding;
   font-size: $navbar-left-group-heading-text-font-size;
   cursor: default;
-  color: var(--bs-nav-link-color)
+  color: var(--bs-nav-link-color);
+  white-space: nowrap;
 }
 
 .caret-icon {
@@ -352,11 +357,13 @@ $main-padding: 1rem !default;
     .nav-sub-items {
       display: none;
       width: $navbar-left-width - $navbar-left-width-minimize;
-      background-color: var(--bs-dark);
       position: absolute;
       left: $navbar-left-width-minimize;
       top: 0;
       padding-left: 0;
+      border-top: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+      border-right: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+      border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
 
       &.collapsing {
         // This guarantees that the button press does not trigger an animation. (In "minimize" size)

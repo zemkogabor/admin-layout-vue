@@ -44,7 +44,9 @@ npm install admin-layout-vue
 | topItems[].subItems[].callable                    | Callable | Yes          |
 | topNavClass                                       | String   | No           |
 | leftNavClass                                      | String   | No           |
-| dataBsTheme                                       | String   | No           |
+| leftNavBgClass                                    | String   | No           |
+| dataBsThemeTop                                    | String   | No           |
+| dataBsThemeLeft                                   | String   | No           |
 
 
 ## Example
