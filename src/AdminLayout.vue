@@ -147,6 +147,10 @@ export default {
       type: String,
       default: null,
     },
+    strictActiveRoute: {
+      type: Boolean,
+      default: true,
+    },
   },
   methods: {
     showLeftNavbarToggle() {
@@ -163,8 +167,8 @@ export default {
      * @returns {boolean}
      */
     isActiveRoute(route) {
-      // If a query was also entered into the specified route, the activity checker also takes it into account.
-      if (route.query !== undefined) {
+      // In strict mode and if query parameter is defined, it must also match to be active.
+      if (this.strictActiveRoute && route.query !== undefined) {
         return this.$route.fullPath === this.$router.resolve(route).fullPath
       }
 

@@ -47,6 +47,7 @@ npm install admin-layout-vue
 | leftNavBgClass                                    | String   | No           |
 | dataBsThemeTop                                    | String   | No           |
 | dataBsThemeLeft                                   | String   | No           |
+| strictActiveRoute                                 | Boolean  | No           |
 
 
 ## Example
