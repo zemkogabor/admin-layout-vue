@@ -236,7 +236,6 @@ $main-padding: 1rem !default;
 .main {
   margin-top: $navbar-top-height;
   padding: $main-padding;
-  overflow: hidden;
   transition: margin-left $navbar-left-transition-time;
 }
 
