@@ -57,7 +57,7 @@
                 :to="item.route"
                 class="nav-link d-flex align-items-center"
                 :class="{
-                  'active': isActiveRoute(item.route),
+                  'active': isActiveRoute(item.route, item.relatedRoutes),
                 }"
                 @click="hideLeftNavbarToggle"
               >
@@ -88,7 +88,7 @@
                       <router-link
                         class="nav-link text-nowrap d-flex align-items-center"
                         :class="{
-                          'active': isActiveRoute(subItem.route),
+                          'active': isActiveRoute(subItem.route, subItem.relatedRoutes),
                         }"
                         :to="subItem.route"
                         @click="hideLeftNavbarToggle"
@@ -164,16 +164,17 @@ export default {
     },
     /**
      * @param route
+     * @param {?String[]} relatedRoutes
      * @returns {boolean}
      */
-    isActiveRoute(route) {
+    isActiveRoute(route, relatedRoutes) {
       // In strict mode and if query parameter is defined, it must also match to be active.
       if (this.strictActiveRoute && route.query !== undefined) {
         return this.$route.fullPath === this.$router.resolve(route).fullPath
       }
 
       // In other cases, it is enough if the route name matches.
-      return this.$route.name === route.name
+      return this.$route.name === route.name || (relatedRoutes && relatedRoutes.includes(this.$route.name))
     },
     /**
      * @param subItems
@@ -181,7 +182,7 @@ export default {
      */
     isActiveAnySubItem(subItems) {
       return subItems.some((subItem) => {
-        return this.isActiveRoute(subItem.route)
+        return this.isActiveRoute(subItem.route, subItem.relatedRoutes)
       })
     },
   },

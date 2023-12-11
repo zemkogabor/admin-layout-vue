@@ -16,38 +16,40 @@ npm install admin-layout-vue
 
 ## Parameters:
 
-| **Property**                                      | **Type** | **Required** |
-|---------------------------------------------------|----------|--------------|
-| brandName                                         | String   | Yes          |
-| leftItemsByGroups                                 | Array    | Yes          |
-| leftItemsByGroups[].heading                       | String   | No           |
-| leftItemsByGroups[].items                         | Array    | Yes          |
-| leftItemsByGroups[].items[].label                 | String   | Yes          |
-| leftItemsByGroups[].items[].iconClass             | String   | No           |
-| leftItemsByGroups[].items[].route                 | Object   | No           |
-| leftItemsByGroups[].items[].route.name            | String   | Yes          |
-| leftItemsByGroups[].items[].visible               | Bool     | No           |
-| leftItemsByGroups[].items[].subItems              | Array    | No           |
-| leftItemsByGroups[].items[].subItems[].label      | String   | Yes          |
-| leftItemsByGroups[].items[].subItems[].route      | Object   | Yes          |
-| leftItemsByGroups[].items[].subItems[].route.name | Object   | Yes          |
-| leftItemsByGroups[].items[].subItems[].visible    | Bool     | No           |
-| topItems                                          | Array    | Yes          |
-| topItems[].label                                  | String   | No           |
-| topItems[].iconClass                              | String   | No           |
-| topItems[].callable                               | Callable | No           |
-| topItems[].showBadge                              | Bool     | No           |
-| topItems[].subItems[]                             | Array    | No           |
-| topItems[].subItems[].label                       | String   | Yes          |
-| topItems[].subItems[].class                       | String   | No           |
-| topItems[].subItems[].iconClass                   | String   | No           |
-| topItems[].subItems[].callable                    | Callable | Yes          |
-| topNavClass                                       | String   | No           |
-| leftNavClass                                      | String   | No           |
-| leftNavBgClass                                    | String   | No           |
-| dataBsThemeTop                                    | String   | No           |
-| dataBsThemeLeft                                   | String   | No           |
-| strictActiveRoute                                 | Boolean  | No           |
+| **Property**                                         | **Type** | **Required** |
+|------------------------------------------------------|----------|--------------|
+| brandName                                            | String   | Yes          |
+| leftItemsByGroups                                    | Array    | Yes          |
+| leftItemsByGroups[].heading                          | String   | No           |
+| leftItemsByGroups[].items                            | Array    | Yes          |
+| leftItemsByGroups[].items[].label                    | String   | Yes          |
+| leftItemsByGroups[].items[].iconClass                | String   | No           |
+| leftItemsByGroups[].items[].route                    | Object   | No           |
+| leftItemsByGroups[].items[].route.name               | String   | Yes          |
+| leftItemsByGroups[].items[].visible                  | Bool     | No           |
+| leftItemsByGroups[].items[].subItems                 | Array    | No           |
+| leftItemsByGroups[].items[].relatedRoutes            | Array    | No           |
+| leftItemsByGroups[].items[].subItems[].label         | String   | Yes          |
+| leftItemsByGroups[].items[].subItems[].route         | Object   | Yes          |
+| leftItemsByGroups[].items[].subItems[].route.name    | Object   | Yes          |
+| leftItemsByGroups[].items[].subItems[].visible       | Bool     | No           |
+| leftItemsByGroups[].items[].subItems[].relatedRoutes | Array    | No           |
+| topItems                                             | Array    | Yes          |
+| topItems[].label                                     | String   | No           |
+| topItems[].iconClass                                 | String   | No           |
+| topItems[].callable                                  | Callable | No           |
+| topItems[].showBadge                                 | Bool     | No           |
+| topItems[].subItems[]                                | Array    | No           |
+| topItems[].subItems[].label                          | String   | Yes          |
+| topItems[].subItems[].class                          | String   | No           |
+| topItems[].subItems[].iconClass                      | String   | No           |
+| topItems[].subItems[].callable                       | Callable | Yes          |
+| topNavClass                                          | String   | No           |
+| leftNavClass                                         | String   | No           |
+| leftNavBgClass                                       | String   | No           |
+| dataBsThemeTop                                       | String   | No           |
+| dataBsThemeLeft                                      | String   | No           |
+| strictActiveRoute                                    | Boolean  | No           |
 
 
 ## Example
@@ -97,6 +99,9 @@ export default {
               route: {
                 name: 'people',
               },
+              relatedRoutes: [
+                  'peopleCreate',
+              ],
             },
             {
               label: 'Briefcase',
@@ -110,6 +115,9 @@ export default {
                       status: '1',
                     },
                   },
+                  relatedRoutes: [
+                    'relatedOption',
+                  ],
                 },
                 {
                   label: 'Option 2',
