@@ -61,6 +61,11 @@ npm install admin-layout-vue
       :left-items-by-groups="leftItemsByGroups"
       :top-items="topItems"
   >
+    <template #topEnd>
+      <div class="badge bg-info me-3">
+        Example
+      </div>
+    </template>
     <router-view />
   </admin-layout>
 </template>

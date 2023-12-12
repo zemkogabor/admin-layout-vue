@@ -1,13 +1,16 @@
 <template>
   <div ref="wrapper" class="layout-wrapper">
     <nav class="navbar navbar-expand navbar-top border-bottom px-3" :class="topNavClass" :data-bs-theme="dataBsThemeTop">
-      <button type="button" class="btn d-md-none" @click="showLeftNavbarToggle">
-        <i class="bi bi-list" />
-      </button>
-      <button type="button" class="btn d-none d-md-block" @click="minimizeLeftNavbarToggle">
-        <i class="bi bi-list" />
-      </button>
-      <div class="navbar-nav ms-auto">
+      <div class="me-auto">
+        <button type="button" class="btn d-md-none" @click="showLeftNavbarToggle">
+          <i class="bi bi-list" />
+        </button>
+        <button type="button" class="btn d-none d-md-block" @click="minimizeLeftNavbarToggle">
+          <i class="bi bi-list" />
+        </button>
+      </div>
+      <slot name="topEnd" />
+      <div class="navbar-nav">
         <div v-for="(item, index) in topItems" :key="index" class="nav-item">
           <button
             class="btn nav-link border-0"
