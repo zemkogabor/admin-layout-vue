@@ -138,11 +138,11 @@ export default {
       default: null,
     },
     leftNavClass: {
-      type: [String, Array],
+      type: [String, Object],
       default: null,
     },
     leftNavBgClass: {
-      type: [String, Array],
+      type: [String, Object],
       default: null,
     },
     dataBsThemeTop: {
