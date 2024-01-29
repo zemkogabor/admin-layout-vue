@@ -84,7 +84,10 @@
                 <div
                   :id="'group' + groupIndex + 'item' + itemIndex"
                   class="nav-sub-items collapse"
-                  :class="[isActiveAnySubItem(item.subItems) ? 'show' : '', leftNavBgClass]"
+                  :class="[
+                    {'show': isActiveAnySubItem(item.subItems)},
+                    leftNavBgClass
+                  ]"
                 >
                   <template v-for="(subItem, subItemIndex) in item.subItems" :key="subItemIndex">
                     <div v-if="subItem.visible !== false" class="nav-item">
@@ -135,11 +138,11 @@ export default {
       default: null,
     },
     leftNavClass: {
-      type: String,
+      type: [String, Array],
       default: null,
     },
     leftNavBgClass: {
-      type: String,
+      type: [String, Array],
       default: null,
     },
     dataBsThemeTop: {
