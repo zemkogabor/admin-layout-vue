@@ -1,6 +1,6 @@
 {
   "name": "admin-layout-vue",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": " Admin layout Vue component with sidebar and navbar.",
   "author": "Gabor Zemko <gaborzemko@gmail.com>",
   "homepage": "https://github.com/zemkogabor/admin-layout-vue",
@@ -11,10 +11,10 @@
     "url": "https://github.com/zemkogabor/admin-layout-vue"
   },
   "main": "src/index.js",
-  "dependencies": {
-    "bootstrap": "^5.2.2",
-    "vue": "^3.2.45",
-    "vue-router": "^4.1.6"
+  "peerDependencies": {
+    "bootstrap": "^5.3.0",
+    "vue": "^3.2.0",
+    "vue-router": "^4.1.0"
   },
   "devDependencies": {
     "eslint": "^8.22.0",
