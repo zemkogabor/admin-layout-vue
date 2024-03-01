@@ -18,7 +18,7 @@ npm install admin-layout-vue
 
 | **Property**                                         | **Type**         | **Required** |
 |------------------------------------------------------|------------------|--------------|
-| brandName                                            | String           | Yes          |
+| brandName                                            | String           | No           |
 | leftItemsByGroups                                    | Array            | Yes          |
 | leftItemsByGroups[].heading                          | String           | No           |
 | leftItemsByGroups[].items                            | Array            | Yes          |
