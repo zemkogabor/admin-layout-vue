@@ -43,11 +43,13 @@
       </div>
     </nav>
     <nav class="navbar navbar-left" :class="[leftNavClass, leftNavBgClass]" :data-bs-theme="dataBsThemeLeft">
-      <div class="navbar-brand">
-        <span class="brand-text">
-          {{ brandName }}
-        </span>
-      </div>
+      <slot name="brand">
+        <div class="navbar-brand">
+          <span class="brand-text">
+            {{ brandName }}
+          </span>
+        </div>
+      </slot>
       <div class="navbar-nav">
         <div v-for="(group, groupIndex) in leftItemsByGroups" :key="groupIndex" class="group-wrapper">
           <div v-if="group.heading" class="group-heading-text text-uppercase mb-2">
