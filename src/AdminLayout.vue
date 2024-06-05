@@ -321,7 +321,6 @@ $main-padding: 1rem !default;
 @include media-breakpoint-up(md) {
   .navbar-left {
     width: $navbar-left-width;
-    border-right: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)
   }
 
   .navbar-top {
