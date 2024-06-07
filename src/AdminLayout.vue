@@ -136,7 +136,7 @@ export default {
       required: true,
     },
     topNavClass: {
-      type: String,
+      type: [String, Object],
       default: null,
     },
     leftNavClass: {
