@@ -67,7 +67,7 @@
                 @click="hideLeftNavbarToggle"
               >
                 <i class="nav-link-icon" :class="item.iconClass" />
-                <span class="nav-link-text text-nowrap" v-text="item.label" />
+                <span class="nav-link-text text-nowrap" :class="item.textClass" v-text="item.label" />
               </router-link>
               <template v-else-if="item.subItems">
                 <a
@@ -80,7 +80,7 @@
                   :data-bs-target="'#group' + groupIndex + 'item' + itemIndex"
                 >
                   <i class="nav-link-icon" :class="item.iconClass" />
-                  <span class="nav-link-text text-nowrap" v-text="item.label" />
+                  <span class="nav-link-text text-nowrap" :class="item.textClass" v-text="item.label" />
                   <i class="nav-link-care-icon bi bi-caret-down-fill ms-auto caret-icon" />
                 </a>
                 <div
